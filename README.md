@@ -11,6 +11,30 @@ EXPOSS 80
 docker run -d  -v /var/www:/var/www  -p 80:80 adrian812/nginx-php7
 ```
 
+docker composer
+
+```
+version: '3'
+services:
+  spider:
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "10"
+    network_mode: "bridge"
+    container_name: php
+    image: adrian812/nginx-php7
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /data/www/fn:/var/www/fn
+    ports:
+      - "80:80"
+
+```
+
 ## html
 
 /var/www
